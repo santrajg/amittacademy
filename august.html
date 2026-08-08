@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Independence Day - 15 August</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        /* Tiranga Gradient Animation */
+        body {
+            background: linear-gradient(to bottom, #FF9933 0%, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%, #138808 100%);
+            background-size: 100% 600%;
+            animation: moveFlag 10s linear infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        @keyframes moveFlag {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+            border: 5px solid #000080;
+        }
+
+        /* Tiranga Animation Effect */
+        .tiranga-strip {
+            height: 10px;
+            width: 100%;
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .saffron { background: #FF9933; flex: 1; }
+        .white { background: #FFFFFF; flex: 1; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; }
+        .green { background: #138808; flex: 1; }
+
+        .name-box {
+            font-size: 30px;
+            font-weight: bold;
+            color: #000080;
+            text-transform: uppercase;
+            margin: 15px 0;
+            padding: 10px;
+            border: 2px dashed #FF9933;
+            background: #fffef0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp { background: #25D366; }
+        .btn-facebook { background: #1877F2; }
+        .btn-generate { background: #FF9933; border: none; cursor: pointer; }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="tiranga-strip">
+            <div class="saffron"></div><div class="white"></div><div class="green"></div>
+        </div>
+
+        <h1 style="color: #FF9933;">HAPPY INDEPENDENCE DAY</h1>
+        <div class="name-box" id="displayName">LOADING...</div>
+        <p>ne aapko 15 August ki dher saari shubhkaamnayein bheji hain!</p>
+
+        <div id="inputArea">
+            <input type="text" id="userName" placeholder="Yahan apna naam likhein...">
+            <button class="btn btn-generate" onclick="generate()">Dekhein Mera Message</button>
+        </div>
+
+        <div id="shareArea" class="hidden">
+            <p style="margin-top: 20px; font-weight: bold;">Ab ise share karke sabko wish karein:</p>
+            <a id="whatsappBtn" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a id="facebookBtn" class="btn btn-facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('n');
+        const display = document.getElementById('displayName');
+
+        if(name) { display.innerText = decodeURIComponent(name); }
+        else { display.innerText = "AAPKA DOST"; }
+
+        function generate() {
+            const nameInput = document.getElementById('userName').value;
+            if(!nameInput) { alert("Pehle naam likhein!"); return; }
+            
+            const baseUrl = window.location.href.split('?')[0];
+            const finalLink = baseUrl + "?n=" + encodeURIComponent(nameInput);
+            
+            // Update UI
+            display.innerText = nameInput;
+            document.getElementById('inputArea').classList.add('hidden');
+            document.getElementById('shareArea').classList.remove('hidden');
+
+            // Set Links
+            const msg = `🇮🇳 Happy Independence Day! 🇮🇳\n\nTumhare dost *${nameInput}* ne tumhare liye special message bheja hai. Neeche diye link par click karo:\n${finalLink}`;
+            document.getElementById('whatsappBtn').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
+            document.getElementById('facebookBtn').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(finalLink)}`;
+        }
+    </script>
+</body>
+</html>
