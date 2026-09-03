@@ -9,11 +9,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Download App</title>
+    <title>Download Money Master APK</title>
 
     <meta
         name="description"
-        content="Download the latest version of our Android app."
+        content="Download the latest version of Money Master Android app."
     >
 
     <style>
@@ -25,6 +25,10 @@
         }
 
 
+        /* =====================================
+           BODY
+        ===================================== */
+
         body {
 
             font-family:
@@ -34,13 +38,20 @@
 
             min-height: 100vh;
 
+            /*
+             * Original upper gradient
+             * + very soft lower transition
+             */
+
             background:
                 linear-gradient(
-                    150deg,
+                    180deg,
                     #ffd9bd 0%,
-                    #ffd6c5 25%,
-                    #f5d6e4 55%,
-                    #d8d1ff 100%
+                    #ffd6c5 18%,
+                    #f5d6e4 42%,
+                    #e6d0df 62%,
+                    #d9c9e4 78%,
+                    #cec3ef 100%
                 );
 
             display: flex;
@@ -52,20 +63,68 @@
             padding: 35px 16px 50px;
 
             color: #20202a;
+
+            position: relative;
+
+            overflow-x: hidden;
         }
 
 
-        /* MAIN CONTAINER */
+        /*
+         * Extra soft glow at the bottom.
+         * No visible line or hard boundary.
+         */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            left: -20%;
+
+            right: -20%;
+
+            bottom: -18%;
+
+            height: 62%;
+
+            background:
+                radial-gradient(
+                    ellipse at center bottom,
+                    rgba(203, 193, 243, 0.55) 0%,
+                    rgba(213, 199, 231, 0.40) 35%,
+                    rgba(225, 205, 224, 0.20) 60%,
+                    rgba(245, 214, 228, 0) 100%
+                );
+
+            filter: blur(35px);
+
+            z-index: -1;
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================
+           MAIN CONTAINER
+        ===================================== */
 
         .container {
 
             width: 100%;
 
             max-width: 500px;
+
+            position: relative;
+
+            z-index: 1;
         }
 
 
-        /* WHITE CARD */
+        /* =====================================
+           WHITE CARD
+        ===================================== */
 
         .card {
 
@@ -91,8 +150,7 @@
 
 
         /* =====================================
-           PINK ICON SECTION
-           INSET FROM CARD EDGES
+           APP ICON SECTION
         ===================================== */
 
         .icon-section {
@@ -115,7 +173,9 @@
         }
 
 
-        /* APP ICON */
+        /* =====================================
+           APP ICON
+        ===================================== */
 
         .app-icon {
 
@@ -131,7 +191,9 @@
         }
 
 
-        /* DESCRIPTION */
+        /* =====================================
+           DESCRIPTION
+        ===================================== */
 
         .subtitle {
 
@@ -147,7 +209,9 @@
         }
 
 
-        /* DOWNLOAD BUTTON */
+        /* =====================================
+           DOWNLOAD BUTTON
+        ===================================== */
 
         .download-btn {
 
@@ -174,13 +238,15 @@
 
             font-size: 18px;
 
-            font-weight: 500;
+            font-weight: 600;
 
             border: none;
 
             cursor: pointer;
 
-            transition: 0.2s;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
 
             box-shadow:
                 0 8px 20px
@@ -206,22 +272,31 @@
         }
 
 
-        /* DOWNLOAD STATUS */
+        /* =====================================
+           DOWNLOAD STATUS
+        ===================================== */
 
         .status {
 
             margin-top: 22px;
+
             margin-left: 22px;
+
             margin-right: 22px;
+
             font-size: 14px;
 
             color: #777783;
 
             line-height: 1.5;
+
+            min-height: 21px;
         }
 
 
-        /* LOADER */
+        /* =====================================
+           LOADER
+        ===================================== */
 
         .loader {
 
@@ -315,11 +390,44 @@
 
         @media (max-width: 480px) {
 
-
             body {
 
                 padding:
                     25px 12px 45px;
+
+                background:
+                    linear-gradient(
+                        180deg,
+                        #ffd9bd 0%,
+                        #ffd6c5 18%,
+                        #f5d6e4 42%,
+                        #e6d0df 62%,
+                        #d9c9e4 78%,
+                        #cec3ef 100%
+                    );
+            }
+
+
+            body::before {
+
+                left: -35%;
+
+                right: -35%;
+
+                bottom: -15%;
+
+                height: 58%;
+
+                filter: blur(30px);
+
+                background:
+                    radial-gradient(
+                        ellipse at center bottom,
+                        rgba(203, 193, 243, 0.55) 0%,
+                        rgba(213, 199, 231, 0.40) 35%,
+                        rgba(225, 205, 224, 0.20) 60%,
+                        rgba(245, 214, 228, 0) 100%
+                    );
             }
 
 
@@ -331,8 +439,6 @@
                 border-radius: 22px;
             }
 
-
-            /* INSET PINK SECTION ON MOBILE */
 
             .icon-section {
 
@@ -350,9 +456,7 @@
 
                 width: 135px;
 
-                height: 160px;
-
-                margin: 0 auto;
+                height: 135px;
             }
 
 
@@ -402,49 +506,44 @@
     <div class="container">
 
 
-        <!-- =====================================
-             WHITE CARD
-        ===================================== -->
+        <!-- WHITE CARD -->
 
         <div class="card">
 
 
-            <!-- =====================================
-                 PINK ICON SECTION
-            ===================================== -->
+            <!-- APP ICON -->
 
             <div class="icon-section">
 
                 <img
-                    src="https://imghosting.in/host/41nhi8"
-                    alt="App Icon"
                     class="app-icon"
+                    src="https://imghosting.in/host/eu9i0y"
+                    alt="Money Master app icon"
+                    width="150"
+                    height="150"
                 >
 
             </div>
 
 
-            <!-- =====================================
-                 DESCRIPTION
-            ===================================== -->
+            <!-- DESCRIPTION -->
 
             <p class="subtitle">
 
                 Earn money by doing simple tasks and quiz.
-                Easy withdrawal & many more.
+                Easy withdrawal &amp; many more.
 
             </p>
 
 
-            <!-- =====================================
-                 DOWNLOAD BUTTON
-            ===================================== -->
+            <!-- DOWNLOAD BUTTON -->
 
             <a
                 id="downloadButton"
                 class="download-btn"
-                href="YOUR_APK_URL_HERE"
-                download
+                href="https://pub-7ebf64711b324a13aeaa53a57df06b0c.r2.dev/MoneyMaster.apk"
+                download="MoneyMaster.apk"
+                rel="noopener"
             >
 
                 Download APK
@@ -452,19 +551,18 @@
             </a>
 
 
-            <!-- =====================================
-                 DOWNLOAD STATUS
-            ===================================== -->
+            <!-- DOWNLOAD STATUS -->
 
             <div
                 class="status"
                 id="status"
+                aria-live="polite"
             >
 
                 <span class="loader"></span>
 
                 Download will start automatically in
-                <b id="countdown">2</b> seconds...
+                <b id="countdown">1</b> second...
 
             </div>
 
@@ -472,51 +570,39 @@
         </div>
 
 
-        <!-- =====================================
-             HOW TO INSTALL
-             OUTSIDE WHITE CARD
-        ===================================== -->
+        <!-- HOW TO INSTALL -->
 
         <div class="install-tips">
-
 
             <h2>
                 How to Install
             </h2>
 
-
             <ol>
-
 
                 <li>
                     Download the APK file.
                 </li>
 
-
                 <li>
                     Open the downloaded APK file.
                 </li>
-
 
                 <li>
                     If prompted, allow installation
                     from unknown sources.
                 </li>
 
-
                 <li>
                     Tap <strong>Install</strong> and wait
                     for the installation to complete.
                 </li>
 
-
                 <li>
                     Open the app and start using it.
                 </li>
 
-
             </ol>
-
 
         </div>
 
@@ -526,16 +612,10 @@
 
     <script>
 
-
-        /* =====================================
-           APK URL
-        ===================================== */
+        /* APK URL */
 
         const apkUrl =
-            "YOUR_APK_URL_HERE";
-
-
-        let seconds = 2;
+            "https://pub-7ebf64711b324a13aeaa53a57df06b0c.r2.dev/MoneyMaster.apk";
 
 
         const countdown =
@@ -546,41 +626,34 @@
             document.getElementById("status");
 
 
+        let seconds = 1;
+
+
         /* =====================================
-           2 SECOND COUNTDOWN
+           EXACTLY 1 SECOND
         ===================================== */
 
         const timer =
             setInterval(function () {
 
-
                 seconds--;
-
-
-                if (seconds > 0) {
-
-                    countdown.textContent =
-                        seconds;
-                }
-
 
                 if (seconds <= 0) {
 
                     clearInterval(timer);
 
                     startDownload();
+
                 }
 
-
-            }, 1000);
+            }, 500);
 
 
         /* =====================================
-           START APK DOWNLOAD
+           START DOWNLOAD
         ===================================== */
 
         function startDownload() {
-
 
             status.innerHTML =
                 '<span class="loader"></span> Starting APK download...';
@@ -595,7 +668,11 @@
 
 
             link.download =
-                "";
+                "MoneyMaster.apk";
+
+
+            link.rel =
+                "noopener";
 
 
             document.body.appendChild(link);
@@ -604,25 +681,19 @@
             link.click();
 
 
-            document.body.removeChild(link);
+            link.remove();
 
-
-            /* DOWNLOAD STARTED MESSAGE */
 
             setTimeout(function () {
 
-
-                status.innerHTML =
+                status.textContent =
                     "Download started. If it didn't start, tap the button above.";
-
 
             }, 1500);
 
         }
 
-
     </script>
-
 
 </body>
 </html>
