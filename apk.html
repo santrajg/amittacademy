@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -38,11 +39,6 @@
 
             min-height: 100vh;
 
-            /*
-             * Original upper gradient
-             * + very soft lower transition
-             */
-
             background:
                 linear-gradient(
                     180deg,
@@ -70,10 +66,9 @@
         }
 
 
-        /*
-         * Extra soft glow at the bottom.
-         * No visible line or hard boundary.
-         */
+        /* =====================================
+           SOFT BOTTOM GLOW
+        ===================================== */
 
         body::before {
 
@@ -337,7 +332,6 @@
 
         /* =====================================
            HOW TO INSTALL
-           OUTSIDE WHITE CARD
         ===================================== */
 
         .install-tips {
@@ -542,7 +536,6 @@
                 id="downloadButton"
                 class="download-btn"
                 href="https://pub-7ebf64711b324a13aeaa53a57df06b0c.r2.dev/MoneyMasterr.apk"
-                download="MoneyMaster.apk"
                 rel="noopener"
             >
 
@@ -612,7 +605,9 @@
 
     <script>
 
-        /* APK URL */
+        /* =====================================
+           APK URL
+        ===================================== */
 
         const apkUrl =
             "https://pub-7ebf64711b324a13aeaa53a57df06b0c.r2.dev/MoneyMasterr.apk";
@@ -626,11 +621,15 @@
             document.getElementById("status");
 
 
+        const downloadButton =
+            document.getElementById("downloadButton");
+
+
         let seconds = 1;
 
 
         /* =====================================
-           EXACTLY 1 SECOND
+           1 SECOND COUNTDOWN
         ===================================== */
 
         const timer =
@@ -646,7 +645,7 @@
 
                 }
 
-            }, 500);
+            }, 1000);
 
 
         /* =====================================
@@ -659,41 +658,47 @@
                 '<span class="loader"></span> Starting APK download...';
 
 
-            const link =
-                document.createElement("a");
+            /*
+             * Open the R2 APK URL.
+             *
+             * The browser/server decides whether
+             * the APK is downloaded or opened.
+             */
+
+            window.location.href = apkUrl;
 
 
-            link.href =
-                apkUrl;
-
-
-            link.download =
-                "MoneyMaster.apk";
-
-
-            link.rel =
-                "noopener";
-
-
-            document.body.appendChild(link);
-
-
-            link.click();
-
-
-            link.remove();
-
+            /*
+             * Update the message after a short delay.
+             */
 
             setTimeout(function () {
 
                 status.textContent =
-                    "Download started. If it didn't start, tap the button above.";
+                    "If the download didn't start, tap the Download APK button.";
 
-            }, 1500);
+            }, 2000);
 
         }
 
+
+        /* =====================================
+           MANUAL DOWNLOAD BUTTON
+        ===================================== */
+
+        downloadButton.addEventListener(
+            "click",
+            function () {
+
+                status.innerHTML =
+                    '<span class="loader"></span> Starting APK download...';
+
+            }
+        );
+
     </script>
 
+
 </body>
+
 </html>
