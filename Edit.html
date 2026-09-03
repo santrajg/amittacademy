@@ -1,27 +1,628 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Download App</title>
+
+    <meta
+        name="description"
+        content="Download the latest version of our Android app."
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    150deg,
+                    #ffd9bd 0%,
+                    #ffd6c5 25%,
+                    #f5d6e4 55%,
+                    #d8d1ff 100%
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            padding: 35px 16px 50px;
+
+            color: #20202a;
+        }
+
+
+        /* MAIN CONTAINER */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 500px;
+        }
+
+
+        /* WHITE CARD */
+
+        .card {
+
+            width: 100%;
+
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            border-radius: 24px;
+
+            padding: 18px 22px 32px;
+
+            box-shadow:
+                0 18px 45px
+                rgba(80, 60, 100, 0.18);
+
+            text-align: center;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.8);
+        }
+
+
+        /* =====================================
+           PINK ICON SECTION
+           INSET FROM CARD EDGES
+        ===================================== */
+
+        .icon-section {
+
+            width: 100%;
+
+            background: #ffd6dc;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            margin-bottom: 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+
+        /* APP ICON */
+
+        .app-icon {
+
+            width: 150px;
+
+            height: 150px;
+
+            object-fit: contain;
+
+            display: block;
+
+            margin: 0 auto;
+        }
+
+
+        /* DESCRIPTION */
+
+        .subtitle {
+
+            color: #777783;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin-bottom: 28px;
+
+            text-align: center;
+        }
+
+
+        /* DOWNLOAD BUTTON */
+
+        .download-btn {
+
+            display: block;
+
+            width: 70%;
+
+            margin: 0 auto;
+
+            padding: 17px 20px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #54b9ef,
+                    #00aeea
+                );
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            font-weight: 500;
+
+            border: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            box-shadow:
+                0 8px 20px
+                rgba(0, 170, 235, 0.25);
+        }
+
+
+        .download-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 25px
+                rgba(0, 170, 235, 0.30);
+        }
+
+
+        .download-btn:active {
+
+            transform:
+                translateY(1px);
+        }
+
+
+        /* DOWNLOAD STATUS */
+
+        .status {
+
+            margin-top: 22px;
+            margin-left: 22px;
+            margin-right: 22px;
+            font-size: 14px;
+
+            color: #777783;
+
+            line-height: 1.5;
+        }
+
+
+        /* LOADER */
+
+        .loader {
+
+            width: 18px;
+
+            height: 18px;
+
+            border:
+                2px solid
+                #d8eefd;
+
+            border-top:
+                2px solid
+                #1aaeea;
+
+            border-radius: 50%;
+
+            display: inline-block;
+
+            vertical-align: middle;
+
+            margin-right: 7px;
+
+            animation:
+                spin 0.8s linear infinite;
+        }
+
+
+        @keyframes spin {
+
+            to {
+
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+
+        /* =====================================
+           HOW TO INSTALL
+           OUTSIDE WHITE CARD
+        ===================================== */
+
+        .install-tips {
+
+            width: 100%;
+
+            margin-top: 30px;
+
+            padding: 0 8px;
+
+            text-align: left;
+        }
+
+
+        .install-tips h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 14px;
+
+            color: #33333d;
+
+            text-align: left;
+        }
+
+
+        .install-tips ol {
+
+            padding-left: 24px;
+
+            color: #666675;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            text-align: left;
+        }
+
+
+        .install-tips li {
+
+            margin-bottom: 7px;
+        }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media (max-width: 480px) {
+
+
+            body {
+
+                padding:
+                    25px 12px 45px;
+            }
+
+
+            .card {
+
+                padding:
+                    6px 8px 30px;
+
+                border-radius: 22px;
+            }
+
+
+            /* INSET PINK SECTION ON MOBILE */
+
+            .icon-section {
+
+                width: 100%;
+
+                border-radius: 17px;
+
+                padding: 18px;
+
+                margin-bottom: 23px;
+            }
+
+
+            .app-icon {
+
+                width: 135px;
+
+                height: 160px;
+
+                margin: 0 auto;
+            }
+
+
+            .subtitle {
+
+                font-size: 14px;
+
+                margin-bottom: 25px;
+
+                text-align: center;
+            }
+
+
+            .download-btn {
+
+                width: 70%;
+
+                padding:
+                    16px 15px;
+
+                font-size: 17px;
+            }
+
+
+            .install-tips {
+
+                padding:
+                    0 5px;
+            }
+
+
+            .install-tips ol {
+
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <h1>Download Our App</h1>
-    <p>Your download will start automatically...</p>
 
-    <a id="downloadBtn"
-       href="https://pub-7ebf64711b324a13aeaa53a57df06b0c.r2.dev/MoneyMaster.apk"
-       download>
-       Download APK
-    </a>
+    <div class="container">
+
+
+        <!-- =====================================
+             WHITE CARD
+        ===================================== -->
+
+        <div class="card">
+
+
+            <!-- =====================================
+                 PINK ICON SECTION
+            ===================================== -->
+
+            <div class="icon-section">
+
+                <img
+                    src="https://imghosting.in/host/41nhi8"
+                    alt="App Icon"
+                    class="app-icon"
+                >
+
+            </div>
+
+
+            <!-- =====================================
+                 DESCRIPTION
+            ===================================== -->
+
+            <p class="subtitle">
+
+                Earn money by doing simple tasks and quiz.
+                Easy withdrawal & many more.
+
+            </p>
+
+
+            <!-- =====================================
+                 DOWNLOAD BUTTON
+            ===================================== -->
+
+            <a
+                id="downloadButton"
+                class="download-btn"
+                href="YOUR_APK_URL_HERE"
+                download
+            >
+
+                Download APK
+
+            </a>
+
+
+            <!-- =====================================
+                 DOWNLOAD STATUS
+            ===================================== -->
+
+            <div
+                class="status"
+                id="status"
+            >
+
+                <span class="loader"></span>
+
+                Download will start automatically in
+                <b id="countdown">2</b> seconds...
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             HOW TO INSTALL
+             OUTSIDE WHITE CARD
+        ===================================== -->
+
+        <div class="install-tips">
+
+
+            <h2>
+                How to Install
+            </h2>
+
+
+            <ol>
+
+
+                <li>
+                    Download the APK file.
+                </li>
+
+
+                <li>
+                    Open the downloaded APK file.
+                </li>
+
+
+                <li>
+                    If prompted, allow installation
+                    from unknown sources.
+                </li>
+
+
+                <li>
+                    Tap <strong>Install</strong> and wait
+                    for the installation to complete.
+                </li>
+
+
+                <li>
+                    Open the app and start using it.
+                </li>
+
+
+            </ol>
+
+
+        </div>
+
+
+    </div>
+
 
     <script>
-        setTimeout(function () {
-            document.getElementById("downloadBtn").click();
-        }, 2000);
+
+
+        /* =====================================
+           APK URL
+        ===================================== */
+
+        const apkUrl =
+            "YOUR_APK_URL_HERE";
+
+
+        let seconds = 2;
+
+
+        const countdown =
+            document.getElementById("countdown");
+
+
+        const status =
+            document.getElementById("status");
+
+
+        /* =====================================
+           2 SECOND COUNTDOWN
+        ===================================== */
+
+        const timer =
+            setInterval(function () {
+
+
+                seconds--;
+
+
+                if (seconds > 0) {
+
+                    countdown.textContent =
+                        seconds;
+                }
+
+
+                if (seconds <= 0) {
+
+                    clearInterval(timer);
+
+                    startDownload();
+                }
+
+
+            }, 1000);
+
+
+        /* =====================================
+           START APK DOWNLOAD
+        ===================================== */
+
+        function startDownload() {
+
+
+            status.innerHTML =
+                '<span class="loader"></span> Starting APK download...';
+
+
+            const link =
+                document.createElement("a");
+
+
+            link.href =
+                apkUrl;
+
+
+            link.download =
+                "";
+
+
+            document.body.appendChild(link);
+
+
+            link.click();
+
+
+            document.body.removeChild(link);
+
+
+            /* DOWNLOAD STARTED MESSAGE */
+
+            setTimeout(function () {
+
+
+                status.innerHTML =
+                    "Download started. If it didn't start, tap the button above.";
+
+
+            }, 1500);
+
+        }
+
+
     </script>
+
 
 </body>
 </html>
