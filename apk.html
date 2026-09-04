@@ -25,11 +25,6 @@
             padding: 0;
         }
 
-
-        /* =====================================
-           BODY
-        ===================================== */
-
         body {
 
             font-family:
@@ -65,11 +60,6 @@
             overflow-x: hidden;
         }
 
-
-        /* =====================================
-           SOFT BOTTOM GLOW
-        ===================================== */
-
         body::before {
 
             content: "";
@@ -100,11 +90,6 @@
             pointer-events: none;
         }
 
-
-        /* =====================================
-           MAIN CONTAINER
-        ===================================== */
-
         .container {
 
             width: 100%;
@@ -115,11 +100,6 @@
 
             z-index: 1;
         }
-
-
-        /* =====================================
-           WHITE CARD
-        ===================================== */
 
         .card {
 
@@ -143,11 +123,6 @@
                 rgba(255, 255, 255, 0.8);
         }
 
-
-        /* =====================================
-           APP ICON SECTION
-        ===================================== */
-
         .icon-section {
 
             width: 100%;
@@ -167,11 +142,6 @@
             align-items: center;
         }
 
-
-        /* =====================================
-           APP ICON
-        ===================================== */
-
         .app-icon {
 
             width: 150px;
@@ -185,11 +155,6 @@
             margin: 0 auto;
         }
 
-
-        /* =====================================
-           DESCRIPTION
-        ===================================== */
-
         .subtitle {
 
             color: #777783;
@@ -202,11 +167,6 @@
 
             text-align: center;
         }
-
-
-        /* =====================================
-           DOWNLOAD BUTTON
-        ===================================== */
 
         .download-btn {
 
@@ -248,7 +208,6 @@
                 rgba(0, 170, 235, 0.25);
         }
 
-
         .download-btn:hover {
 
             transform:
@@ -259,17 +218,11 @@
                 rgba(0, 170, 235, 0.30);
         }
 
-
         .download-btn:active {
 
             transform:
                 translateY(1px);
         }
-
-
-        /* =====================================
-           DOWNLOAD STATUS
-        ===================================== */
 
         .status {
 
@@ -287,11 +240,6 @@
 
             min-height: 21px;
         }
-
-
-        /* =====================================
-           LOADER
-        ===================================== */
 
         .loader {
 
@@ -319,7 +267,6 @@
                 spin 0.8s linear infinite;
         }
 
-
         @keyframes spin {
 
             to {
@@ -328,11 +275,6 @@
                     rotate(360deg);
             }
         }
-
-
-        /* =====================================
-           HOW TO INSTALL
-        ===================================== */
 
         .install-tips {
 
@@ -345,7 +287,6 @@
             text-align: left;
         }
 
-
         .install-tips h2 {
 
             font-size: 21px;
@@ -356,7 +297,6 @@
 
             text-align: left;
         }
-
 
         .install-tips ol {
 
@@ -371,16 +311,10 @@
             text-align: left;
         }
 
-
         .install-tips li {
 
             margin-bottom: 7px;
         }
-
-
-        /* =====================================
-           MOBILE
-        ===================================== */
 
         @media (max-width: 480px) {
 
@@ -400,7 +334,6 @@
                         #cec3ef 100%
                     );
             }
-
 
             body::before {
 
@@ -424,7 +357,6 @@
                     );
             }
 
-
             .card {
 
                 padding:
@@ -432,7 +364,6 @@
 
                 border-radius: 22px;
             }
-
 
             .icon-section {
 
@@ -445,14 +376,12 @@
                 margin-bottom: 23px;
             }
 
-
             .app-icon {
 
                 width: 135px;
 
                 height: 135px;
             }
-
 
             .subtitle {
 
@@ -462,7 +391,6 @@
 
                 text-align: center;
             }
-
 
             .download-btn {
 
@@ -474,13 +402,11 @@
                 font-size: 17px;
             }
 
-
             .install-tips {
 
                 padding:
                     0 5px;
             }
-
 
             .install-tips ol {
 
@@ -500,12 +426,8 @@
     <div class="container">
 
 
-        <!-- WHITE CARD -->
-
         <div class="card">
 
-
-            <!-- APP ICON -->
 
             <div class="icon-section">
 
@@ -520,8 +442,6 @@
             </div>
 
 
-            <!-- DESCRIPTION -->
-
             <p class="subtitle">
 
                 Earn money by doing simple tasks and quiz.
@@ -530,12 +450,12 @@
             </p>
 
 
-            <!-- DOWNLOAD BUTTON -->
+            <!-- NEW APK LINK -->
 
             <a
                 id="downloadButton"
                 class="download-btn"
-                href="https://pub-7ebf64711b324a13aeaa53a57df06b0c.r2.dev/MoneyMasterr.apk"
+                href="https://pub-d3386fcf48bc45ec960251ea4d6ef293.r2.dev/MoneyMaster.apk"
                 rel="noopener"
             >
 
@@ -543,8 +463,6 @@
 
             </a>
 
-
-            <!-- DOWNLOAD STATUS -->
 
             <div
                 class="status"
@@ -562,8 +480,6 @@
 
         </div>
 
-
-        <!-- HOW TO INSTALL -->
 
         <div class="install-tips">
 
@@ -606,11 +522,11 @@
     <script>
 
         /* =====================================
-           APK URL
+           NEW APK URL
         ===================================== */
 
         const apkUrl =
-            "https://pub-7ebf64711b324a13aeaa53a57df06b0c.r2.dev/MoneyMasterr.apk";
+            "https://pub-d3386fcf48bc45ec960251ea4d6ef293.r2.dev/MoneyMaster.apk";
 
 
         const countdown =
@@ -658,19 +574,8 @@
                 '<span class="loader"></span> Starting APK download...';
 
 
-            /*
-             * Open the R2 APK URL.
-             *
-             * The browser/server decides whether
-             * the APK is downloaded or opened.
-             */
-
             window.location.href = apkUrl;
 
-
-            /*
-             * Update the message after a short delay.
-             */
 
             setTimeout(function () {
 
